@@ -17,23 +17,29 @@ function PostList({ isPosting, onStopPosting }) {
     setEnteredAuthor(event.target.value);
   }
 
-  let modalContent;
+  // let modalContent;
 
-  {
-    isPosting && (
-      <Modal onClose={onStopPosting}>
-        <NewPost
-          onBodyChange={bodyChangeHandler}
-          onAuthorChange={authorChangeHandler}
-          onCancel={onStopPosting}
-        />
-      </Modal>
-    );
-  }
+  // if (modalIsVisible) {
+  //   modalContent = (
+  //     <Modal onClose={hideModalHandler}>
+  //       <NewPost
+  //         onBodyChange={bodyChangeHandler}
+  //         onAuthorChange={authorChangeHandler}
+  //       />
+  //     </Modal>
+  //   );
+  // }
 
   return (
     <>
-      {modalContent}
+      {isPosting && (
+        <Modal onClose={onStopPosting}>
+          <NewPost
+            onBodyChange={bodyChangeHandler}
+            onAuthorChange={authorChangeHandler}
+          />
+        </Modal>
+      )}
       <ul className={classes.posts}>
         <Post author={enteredAuthor} body={enteredBody} />
         <Post author="Mbuso" body="Check out the full course" />
